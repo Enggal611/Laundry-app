@@ -40,7 +40,6 @@ class _adminPageState extends State<adminPage> {
   @override
   void initState(){
     super.initState();
-    // getData();
   }
 
   @override
@@ -76,7 +75,6 @@ class _adminPageState extends State<adminPage> {
                     
                   ),
                 ),
-                
                 
                 Positioned.fill(
                   child: SingleChildScrollView(
