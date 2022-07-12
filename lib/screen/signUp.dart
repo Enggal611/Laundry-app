@@ -31,11 +31,11 @@ class _sign_upState extends State<sign_up> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
                 Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 180,
                   decoration: BoxDecoration(
                     image:
                         DecorationImage(image: AssetImage("image/signup.png")),
@@ -155,7 +155,7 @@ class _sign_upState extends State<sign_up> {
                       ),
 
                       SizedBox(
-                        height: 20,
+                        height: 30,
                       ),
 
                       loading
@@ -258,7 +258,7 @@ class _sign_upState extends State<sign_up> {
                                   builder: (_) => login_screen()));
                             },
                             child: Text(
-                              'Login here',
+                              'Login Here',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15,
