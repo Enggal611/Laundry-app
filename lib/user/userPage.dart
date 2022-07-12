@@ -1,11 +1,10 @@
- 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../form/formOrder/order.dart'; 
+import '../form/formOrder/order.dart';
 
 class userPage extends StatefulWidget {
   const userPage({Key? key}) : super(key: key);
@@ -18,33 +17,30 @@ class _userPageState extends State<userPage> {
   final currentUser = FirebaseAuth.instance;
 
   final gambar = [
-    'image/1.png',
-    'image/bg2.png',
-    'image/logo.png',
-    'image/signup.png',
+    'image/banner1.png',
+    'image/banner2.png',
+    'image/banner3.png'
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.blue,
       body: SafeArea(
         child: Stack(children: [
           Positioned.fill(
-              top: 240,
+              top: 250,
               child: Container(
                 child: Container(
-                  
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30)),
-                          
                       gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [Colors.white, Colors.white])
-                          ),
+                          colors: [Colors.white, Colors.white])),
                 ),
               )),
           Column(
@@ -65,17 +61,15 @@ class _userPageState extends State<userPage> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 10, top: 15, bottom: 10),
+                                      left: 20, top: 15, bottom: 10),
                                   child: Text(
                                     'Selamat Datang, ' + data['nama'],
-                                  
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        ),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                  
                                 ),
                               ],
                             );
@@ -95,17 +89,16 @@ class _userPageState extends State<userPage> {
                     }
                   }),
               Padding(
-                padding: const EdgeInsets.all(5),
+                padding: const EdgeInsets.only(right: 15, left: 15, top: 5),
                 child: CarouselSlider(
-                  
                   items: gambar.map(
                     (img) {
                       return Builder(
                         builder: (BuildContext context) {
                           return Container(
                             decoration: BoxDecoration(
-                              color: Colors.white,
-                                borderRadius: BorderRadius.circular(30),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
                                   image: AssetImage(img),
                                   fit: BoxFit.cover,
@@ -124,9 +117,8 @@ class _userPageState extends State<userPage> {
                   ),
                 ),
               ),
-              
               Padding(
-                padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
+                padding: const EdgeInsets.only(top: 25, left: 10, right: 10),
                 child: GridView(
                   padding: EdgeInsets.all(10),
                   shrinkWrap: true,
@@ -175,11 +167,12 @@ class _userPageState extends State<userPage> {
                           context: context,
                           builder: (context) => AlertDialog(
                             title: Text('Pemberitahuan'),
-                            content: 
-                            Text('Menu Sedang Dalam Pengembangan!', 
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),),
+                            content: Text(
+                              'Menu Sedang Dalam Pengembangan!',
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                            ),
                             actions: [
                               ElevatedButton(
                                   onPressed: () {
@@ -189,7 +182,6 @@ class _userPageState extends State<userPage> {
                             ],
                           ),
                         );
-                      
                       },
                       child: Card(
                         color: Colors.blue[50],
@@ -223,11 +215,12 @@ class _userPageState extends State<userPage> {
                           context: context,
                           builder: (context) => AlertDialog(
                             title: Text('Pemberitahuan'),
-                            content: 
-                            Text('Menu Sedang Dalam Pengembangan!', 
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),),
+                            content: Text(
+                              'Menu Sedang Dalam Pengembangan!',
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                            ),
                             actions: [
                               ElevatedButton(
                                   onPressed: () {
@@ -237,7 +230,6 @@ class _userPageState extends State<userPage> {
                             ],
                           ),
                         );
-                      
                       },
                       child: Card(
                         color: Colors.blue[50],
@@ -271,11 +263,12 @@ class _userPageState extends State<userPage> {
                           context: context,
                           builder: (context) => AlertDialog(
                             title: Text('Pemberitahuan'),
-                            content: 
-                            Text('Menu Sedang Dalam Pengembangan!', 
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),),
+                            content: Text(
+                              'Menu Sedang Dalam Pengembangan!',
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                            ),
                             actions: [
                               ElevatedButton(
                                   onPressed: () {
@@ -285,7 +278,6 @@ class _userPageState extends State<userPage> {
                             ],
                           ),
                         );
-                      
                       },
                       child: Card(
                         color: Colors.blue[50],
@@ -305,7 +297,7 @@ class _userPageState extends State<userPage> {
                               height: 10,
                             ),
                             Text(
-                              'Cucian Satuan',
+                              'Cuci Satuan',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15),
                             ),
@@ -316,7 +308,6 @@ class _userPageState extends State<userPage> {
                   ],
                 ),
               ),
-              
             ],
           ),
         ]),

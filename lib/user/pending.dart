@@ -16,25 +16,27 @@ class _pendingState extends State<pending> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("On Procces"),
-      ),
+        appBar: AppBar(
+          title: Text("On Process"),
+        ),
         body: SafeArea(
-          child: StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance
-                  .collection('cust')
-                  .where("email", isEqualTo: user.currentUser!.email)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: Text('Loading'));
-                }
-                return Column(children: [
-                  Expanded(child: pending(snapshot)),
-                ]);
-              }),
-        )
-          );
+          child: Padding(
+            padding: const EdgeInsets.all(5),
+            child: StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance
+                    .collection('cust')
+                    .where("email", isEqualTo: user.currentUser!.email)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: Text('Loading'));
+                  }
+                  return Column(children: [
+                    Expanded(child: pending(snapshot)),
+                  ]);
+                }),
+          ),
+        ));
   }
 
   Widget pending(AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
@@ -45,23 +47,20 @@ class _pendingState extends State<pending> {
 
     return ListView.builder(
       itemCount: allData?.length,
-      itemBuilder: (context, index) => Card(
-        child: itemOrder(
-          id: allData?[index].id?? '',
-          nama: allData?[index]['nama'],
-          tgl: allData?[index]['tanggal'],
-          gbr: allData?[index]['gambar'],
-          alamat: allData?[index]['alamat'],
-          berat: allData?[index]['berat'],
-          diambil: allData?[index]['diambil'],
-          status: allData?[index]['status'],
-          telp: allData?[index]['telepon'],
-          total: allData?[index]['total'],
-          bayar: allData?[index]['pembayaran'],
-          selesai: allData?[index]['laundry selesai'],
-        ),
+      itemBuilder: (context, index) => itemOrder(
+        id: allData?[index].id ?? '',
+        nama: allData?[index]['nama'],
+        tgl: allData?[index]['tanggal'],
+        gbr: allData?[index]['gambar'],
+        alamat: allData?[index]['alamat'],
+        berat: allData?[index]['berat'],
+        diambil: allData?[index]['diambil'],
+        status: allData?[index]['status'],
+        telp: allData?[index]['telepon'],
+        total: allData?[index]['total'],
+        bayar: allData?[index]['pembayaran'],
+        selesai: allData?[index]['laundry selesai'],
       ),
-
     );
   }
 }

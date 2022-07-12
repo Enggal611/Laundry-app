@@ -28,10 +28,9 @@ class _NavState extends State<Nav> {
       email: '',
       password: '',
     )
-
   ];
 
-  void _onItemTap(int index){
+  void _onItemTap(int index) {
     setState(() {
       _button = index;
     });
@@ -40,41 +39,40 @@ class _NavState extends State<Nav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _item.elementAt(_button),
-      ),
-      
-      bottomNavigationBar: Container(
-        color: Colors.blueAccent,
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: GNav(
-            backgroundColor: Colors.blueAccent,
-            color: Colors.white,
-            activeColor: Colors.black,
-            tabBackgroundColor: Colors.blue.shade300,
-            gap: 8,
-            onTabChange: _onItemTap,
-            padding: EdgeInsets.all(15),
-            tabs: [
-              GButton(
-                icon: Icons.home,
-                  text: 'Home',),
-              GButton(
-                icon: Icons.pending_actions_sharp,
-                  text: 'Pending',),
-              GButton(
-                icon: Icons.history,
-                  text: 'History',),
-              GButton(
-                icon: Icons.account_circle_outlined,
-                  text: 'Account',),
-              ]
-            ),
+        body: Center(
+          child: _item.elementAt(_button),
         ),
-      )
-
-    );
-    
+        bottomNavigationBar: Container(
+          color: Colors.blueAccent,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: GNav(
+                backgroundColor: Colors.blueAccent,
+                color: Colors.white,
+                activeColor: Color.fromARGB(255, 0, 41, 112),
+                tabBackgroundColor: Colors.blue.shade300,
+                gap: 8,
+                onTabChange: _onItemTap,
+                padding: EdgeInsets.all(15),
+                tabs: [
+                  GButton(
+                    icon: Icons.home,
+                    text: 'Home',
+                  ),
+                  GButton(
+                    icon: Icons.pending_actions_sharp,
+                    text: 'On Process',
+                  ),
+                  GButton(
+                    icon: Icons.history,
+                    text: 'History',
+                  ),
+                  GButton(
+                    icon: Icons.account_circle_outlined,
+                    text: 'Account',
+                  ),
+                ]),
+          ),
+        ));
   }
 }

@@ -10,7 +10,6 @@ class readOrder extends StatefulWidget {
 }
 
 class _readOrderState extends State<readOrder> {
-
   final user = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class _readOrderState extends State<readOrder> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        title: Text("Pesanan"),
+        title: Text("History Pesanan"),
       ),
       body: SafeArea(
         child: Stack(children: [
@@ -36,9 +35,7 @@ class _readOrderState extends State<readOrder> {
           Padding(
             padding: const EdgeInsets.all(5),
             child: StreamBuilder<QuerySnapshot>(
-              stream:
-
-                  FirebaseFirestore.instance
+              stream: FirebaseFirestore.instance
                   .collection('cust')
                   .where("email", isEqualTo: user.currentUser!.email)
                   .snapshots(),
@@ -51,8 +48,8 @@ class _readOrderState extends State<readOrder> {
                   return Center(child: Text('Loading'));
                 }
                 return Column(children: [
-              Expanded(child: pending(snapshot)),
-            ]);
+                  Expanded(child: pending(snapshot)),
+                ]);
               },
             ),
           ),
@@ -69,23 +66,20 @@ class _readOrderState extends State<readOrder> {
 
     return ListView.builder(
       itemCount: allData?.length,
-      itemBuilder: (context, index) => Card(
-        child: itemOrder(
-          id: allData?[index].id?? '',
-          nama: allData?[index]['nama'],
-          tgl: allData?[index]['tanggal'],
-          gbr: allData?[index]['gambar'],
-          alamat: allData?[index]['alamat'],
-          berat: allData?[index]['berat'],
-          diambil: allData?[index]['diambil'],
-          status: allData?[index]['status'],
-          telp: allData?[index]['telepon'],
-          total: allData?[index]['total'],
-          bayar: allData?[index]['pembayaran'],
-          selesai: allData?[index]['laundry selesai'],
-        ),
+      itemBuilder: (context, index) => itemOrder(
+        id: allData?[index].id ?? '',
+        nama: allData?[index]['nama'],
+        tgl: allData?[index]['tanggal'],
+        gbr: allData?[index]['gambar'],
+        alamat: allData?[index]['alamat'],
+        berat: allData?[index]['berat'],
+        diambil: allData?[index]['diambil'],
+        status: allData?[index]['status'],
+        telp: allData?[index]['telepon'],
+        total: allData?[index]['total'],
+        bayar: allData?[index]['pembayaran'],
+        selesai: allData?[index]['laundry selesai'],
       ),
-
     );
   }
 }
